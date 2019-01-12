@@ -12,14 +12,14 @@ public class Main {
         DBService dbService = new DBService();
         dbService.create();
         consoleController = new ConsoleController(dbService);
-        swingController = new SwingController(dbService);
+        swingController = new SwingController();
 
         if (args.length != 1)
             System.out.println("error args.length != 1");
         else if (args[0].equals("console"))
             consoleController.startConsole();
         else if (args[0].equals("gui"))
-            swingController.startGUI();
+            swingController.toMainWindow(null);
 
     }
 }

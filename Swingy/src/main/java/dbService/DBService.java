@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -93,6 +94,17 @@ public class DBService {
 
         try {
             return playerDAO.getMapPlayers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<String> getListPlayers() {
+        PlayerDAO playerDAO = new PlayerDAO(connection);
+
+        try {
+            return playerDAO.getListPlayers();
         } catch (SQLException e) {
             e.printStackTrace();
         }

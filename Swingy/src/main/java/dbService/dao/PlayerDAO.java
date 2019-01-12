@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -75,6 +76,19 @@ public class PlayerDAO {
             if (playersMap.isEmpty())
                 return null;
             return playersMap;
+        });
+    }
+
+    public ArrayList<String> getListPlayers() throws SQLException {
+        ArrayList<String> playersList = new ArrayList<String>();
+        return executor.execQuery("select * from players", result -> {
+            /*if (!result.next())
+                return null;*/
+            for(int i = 0; result.next(); i++)
+                playersList.add(result.getString(2));
+            if (playersList.isEmpty())
+                return null;
+            return playersList;
         });
     }
 
